@@ -28,7 +28,7 @@
     var dependencies = ['angular'];
     if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
         // CommonJS
-        factory.apply(root, [exports].concat(dependencies.map(require)));
+        factory.apply(root, [exports, require('angular')]);
     } else if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['exports'].concat(dependencies), factory);
