@@ -20,6 +20,8 @@
  * THE SOFTWARE.
  */
 
+/* global define */
+
 /* Modul-Definition inspiriert von
  * https://github.com/umdjs/umd/blob/master/templates/commonjsStrict.js */
 (function (root, factory) {
@@ -33,7 +35,9 @@
     } else {
         // Browser globals
         factory.apply(root, [root.angularSafeApply = {}].concat(
-            dependencies.map(function (dependency) { root[dependency] })));
+            dependencies.map(function (dependency) {
+                return root[dependency];
+            })));
     }
 } (this, function (exports, angular) {
     'use strict';
