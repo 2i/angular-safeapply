@@ -20,11 +20,27 @@
  * THE SOFTWARE.
  */
 
-(function (angular, window) {
+/* Modul-Definition inspiriert von
+ * https://github.com/umdjs/umd/blob/master/templates/commonjsStrict.js */
+(function (root, factory) {
+    var dependencies = ['angular'];
+    if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+        // CommonJS
+        factory.apply(root, [exports].concat(dependencies.map(require)));
+    } else if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['exports'].concat(dependencies), factory);
+    } else {
+        // Browser globals
+        factory.apply(root, [root.angularSafeApply = {}].concat(
+            dependencies.map(function (dependency) { root[dependency] })));
+    }
+} (this, function (exports, angular) {
     'use strict';
 
-    angular.module('SafeApply', [])
+    var window = this;
 
+    angular.module('SafeApply', [])
         .factory('$safeApply', ['$rootScope', function ($rootScope) {
             $rootScope.$safeApply = function () {
                 var $scope, fn, arg, force = false, args = arguments;
@@ -50,11 +66,11 @@
                 // used a try / catch with a debugger statement
                 // before I could inspect an exception instance
                 if ($scope === window) { $scope = $rootScope; }
-                
-                fn = fn || function () {};
+
+                fn = fn || function () { };
 
                 if (force || !($scope.$$phase ||
-                        ($scope.$root && $scope.$root.$$phase))) {
+                    ($scope.$root && $scope.$root.$$phase))) {
                     $scope.$apply ? $scope.$apply(fn) : $scope.apply(fn);
                 } else {
                     fn();
@@ -65,6 +81,5 @@
         }])
 
         // Mix it into the root scope
-        .run(['$safeApply', function () {}]);
-
-}(this.angular, this));
+        .run(['$safeApply', function () { }]);
+}));
