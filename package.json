@@ -1,0 +1,27 @@
+{
+  "name": "angular-safeapply",
+  "version": "1.0.6",
+  "description": "AngularJS $scope.$apply() without the hassle and errors",
+  "main": "safe-apply.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2i/angular-safeapply.git"
+  },
+  "keywords": [
+    "angular",
+    "$apply",
+    "apply"
+  ],
+  "author": "Christoph Müller <iblzm@hotmail.de>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2i/angular-safeapply/issues"
+  },
+  "homepage": "https://github.com/2i/angular-safeapply#readme",
+  "devDependencies": {
+    "angular": "^1.5.8"
+  }
+}
