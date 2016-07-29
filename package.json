@@ -21,7 +21,7 @@
     "url": "https://github.com/2i/angular-safeapply/issues"
   },
   "homepage": "https://github.com/2i/angular-safeapply#readme",
-  "devDependencies": {
+  "dependencies": {
     "angular": "^1.5.8"
   }
 }
