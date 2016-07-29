@@ -1,4 +1,7 @@
 {
   "name": "angular-safeapply",
-  "main": "./safe-apply.js"
+  "main": "./safe-apply.js",
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
 }
